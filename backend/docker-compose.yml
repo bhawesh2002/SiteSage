@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  backend:
+    build: .
+    container_name: sitesage-backend
+    env_file:
+      - app/core/.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    restart: unless-stopped
+    develop:
+      watch:
+        - action: sync
+          path: ./app
+          target: /app/app
+        - action: rebuild
+          path: ./requirements.txt
+
+  db:
+    image: postgres:16
+    container_name: sitesage-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: sitesage
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

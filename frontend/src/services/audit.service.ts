@@ -1,5 +1,7 @@
 import { apiClient } from "@/lib/api_client";
 
+/* ---------- Types ---------- */
+
 export interface AuditListItem {
   id: string;
   url: string;
@@ -14,16 +16,25 @@ export interface AuditDetail extends AuditListItem {
   ai_recommendations: string[] | null;
 }
 
+/* ---------- Service ---------- */
+
 export class AuditService {
-  static createAudit(url: string): Promise<AuditDetail> {
-    return apiClient.post<AuditDetail>("/audit/", { url });
+  static async createAudit(url: string): Promise<AuditDetail> {
+    const response = await apiClient.post<AuditDetail>("/audit", { url });
+    return response;
   }
 
-  static listAudits(): Promise<AuditListItem[]> {
-    return apiClient.get<AuditListItem[]>("/audit/list");
+  static async listAudits(): Promise<AuditListItem[]> {
+    const response = await apiClient.get<AuditListItem[]>("/audit/list");
+    return response;
   }
 
-  static getAuditById(id: string): Promise<AuditDetail> {
-    return apiClient.get<AuditDetail>(`/audit/${id}`);
+  static async getAuditById(id: string): Promise<AuditDetail> {
+    const response = await apiClient.get<AuditDetail>(`/audit/${id}`);
+    return response;
   }
 }
+
+/* ---------- Singleton Export ---------- */
+
+export const auditService = AuditService;

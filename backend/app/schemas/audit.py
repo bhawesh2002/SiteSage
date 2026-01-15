@@ -11,6 +11,7 @@ class AuditCreateRequest(BaseModel):
 class AuditResponse(BaseModel):
     id: UUID
     url: str
+    normalized_url: str
     seo_score: int
     issues: List[str]
     metrics: Dict
@@ -25,6 +26,7 @@ class AuditResponse(BaseModel):
 class AuditListItem(BaseModel):
     id: UUID
     url: str
+    normalized_url: str
     seo_score: int
     issues: List[str]
     metrics: Dict

@@ -9,6 +9,7 @@ from app.services.seo_analysis_service import analyze_seo
 from app.models.audit_report import AuditReport
 from app.schemas.audit import AuditCreateRequest, AuditResponse, AuditListItem
 from app.services.ai.client_factory import get_ai_client
+from app.utils.urls import normalize_url
 
 router = APIRouter(prefix="/audit", tags=["Audit"])
 
@@ -17,6 +18,14 @@ router = APIRouter(prefix="/audit", tags=["Audit"])
 async def create_audit(
     audit_request: AuditCreateRequest, db: Session = Depends(get_db)
 ):
+    normalized = normalize_url(audit_request.url)
+    existing = (
+        db.query(AuditReport).filter(AuditReport.normalized_url == normalized).first()
+    )
+
+    if existing:
+        return existing
+
     try:
         metrics = await crawl_url(audit_request.url)
     except Exception as exc:
@@ -37,6 +46,7 @@ async def create_audit(
 
     report = AuditReport(
         url=audit_request.url,
+        normalized_url=normalized,
         seo_score=seo_score,
         issues=issues,
         metrics=metrics,

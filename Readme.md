@@ -3,6 +3,11 @@
 SiteSage is a production-grade full-stack web platform that analyzes website URLs for SEO and performance quality.  
 It crawls a given website, extracts key on-page SEO signals, evaluates performance metrics, and generates structured SEO reports enriched with AI-powered insights and optimization recommendations.
 
+- Frontend: https://site-sage-delta.vercel.app
+
+- Backend: https://sitesage.onrender.com
+
+- Swagger Docs: https://sitesage.onrender.com/docs
 ---
 
 ## ✨ Key Features

@@ -3,8 +3,6 @@
 SiteSage is a production-grade full-stack web platform that analyzes website URLs for SEO and performance quality.  
 It crawls a given website, extracts key on-page SEO signals, evaluates performance metrics, and generates structured SEO reports enriched with AI-powered insights and optimization recommendations.
 
-This project was built as part of a Full Stack Developer technical assignment for **Madeline & Co.**, with a strong focus on clean architecture, reliability, and pragmatic AI integration.
-
 ---
 
 ## ✨ Key Features

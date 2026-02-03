@@ -1,7 +1,7 @@
 # SiteSage — Automated SEO Performance Analyzer
 
 SiteSage is a production-grade full-stack web platform that analyzes website URLs for SEO and performance quality.  
-It crawls a given website, extracts key on-page SEO signals, evaluates performance metrics, and generates structured SEO reports enriched with AI-powered insights and optimization recommendations.
+It crawls a given website, extracts key on-page SEO signals, evaluates performance metrics, and generates structured SEO reports enriched with AI-powered insights(using letta) and optimization recommendations.
 
 - Frontend: https://site-sage-delta.vercel.app
 
